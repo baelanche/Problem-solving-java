@@ -1,4 +1,4 @@
-package boj.bruteforce;
+package boj.bruteforce.prob;
 
 import java.util.Arrays;
 import java.util.Scanner;
