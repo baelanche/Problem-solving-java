@@ -1,4 +1,4 @@
-package bog.sort.prob;
+package boj.sort.prob;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package bog.realize.prob;
+package boj.realize.prob;
 
 import java.util.Scanner;
 
