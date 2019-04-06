@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class p9507 {
 
-public static long dp[] = new long[68];
+	public static long dp[] = new long[68];
     
     public static long f(int n) {
         if(n < 2) return 1;
