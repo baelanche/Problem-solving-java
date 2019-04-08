@@ -1,12 +1,14 @@
-package collection;
+package boj.dfs.prob;
 
-public class Graph {
+import java.util.Scanner;
+
+public class p11724 {
 
 	int adj[][];
     boolean visited[];
     int n;
     
-    Graph(int n) {
+    p11724(int n) {
         this.n = n;
         adj = new int[n+1][n+1];
         visited = new boolean[n+1];
@@ -59,4 +61,24 @@ public class Graph {
         }
         return str;
     }
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        
+        p11724 g = new p11724(N);
+        
+        while(M-->0) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            
+            g.addEdge(u, v);
+        }
+        
+        System.out.println(g.dfsAll());
+        sc.close();
+    }
 }
+
