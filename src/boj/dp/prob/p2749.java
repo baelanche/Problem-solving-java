@@ -20,11 +20,11 @@ public class p2749 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		int n = sc.nextLong();
+		//int n = sc.nextLong();
 		dp = new int[100000000];
 		
 		Arrays.fill(dp, -1);
-		System.out.print(f(n)%1000000);
+		//System.out.print(f(n)%1000000);
 
 	}
 
