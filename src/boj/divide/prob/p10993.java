@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class p10993 {
 
-static char a[][];
+	static char a[][];
     
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -24,6 +24,10 @@ static char a[][];
         }
         
         a = new char[height][width];
+        
+        for(int i=0; i<height; i++)
+        	for(int j=0; j<width; j++)
+        		a[i][j] = ' ';
         
         drawStar(0, 0, height, width, n);
         
