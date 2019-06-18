@@ -3,7 +3,7 @@ package boj.dp.prob;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class p2294 {
+public class p2294TopDown {
 
 	public static int N;
 	public static int[] coin;
