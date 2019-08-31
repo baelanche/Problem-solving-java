@@ -1,5 +1,6 @@
 package boj.realize.prob;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class p10214 {
