@@ -1,0 +1,7 @@
+# compiled source
+bin
+
+# environment
+.settings
+.classpath
+.project
