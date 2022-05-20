@@ -9,14 +9,13 @@ public class p5639 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Tree tree = new Tree();
-		for(int i=0; i<10000; i++) {
+		while(true) {
 			String s = br.readLine();
-			if (s == null) break;
-			
+			if(s == null || s.equals("")) break;
 			int value = Integer.parseInt(s);
 			tree.addNode(value);
-			
 		}
+		tree.postOrder(tree.root);
 	}
 }
 
@@ -26,27 +25,32 @@ class Tree {
 		int value;
 		Node left;
 		Node right;
-		
-		void left(Node node) {
-			left = node;
-		}
-		
-		void right(Node node) {
-			right = node;
-		}
 	}
+	
+	Node root;
 	
 	void addNode(int value) {
-		Node node = new Node();
-		node.value = value;
+		if (root == null) {
+			root = new Node();
+			root.value = value;
+			return;
+		}
+		addNode(root, value);
 	}
 	
-	public void preOrder(Node node) {
+	void addNode(Node node, int value) {
 		if(node == null) return;
-		
-		//
-		preOrder(node.left);
-		preOrder(node.right);
+		if(node.value < value) {
+			if(node.right == null) {
+				node.right = new Node();
+				node.right.value = value;
+			} else addNode(node.right, value);
+		} else {
+			if(node.left == null) {
+				node.left = new Node();
+				node.left.value = value;
+			} else addNode(node.left, value);
+		}
 	}
 	
 	public void postOrder(Node node) {
@@ -54,6 +58,6 @@ class Tree {
 		
 		postOrder(node.left);
 		postOrder(node.right);
-		//
+		System.out.println(node.value);
 	}
 }
