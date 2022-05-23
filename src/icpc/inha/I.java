@@ -3,7 +3,6 @@ package icpc.inha;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 public class I {
 
@@ -16,24 +15,19 @@ public class I {
 			else ud[i] = 0; //lower
 		}
 		
+		int isud = 0;
 		int cnt = c.length;
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		int len = 0;
 		for(int i=0; i<c.length; i++) {
-			if(ud[i] == 1) len++;
-			if(ud[i] == 0) {
-				if(len > 0) list.add(len);
-				len = 0;
+			if(isud == ud[i]) continue;
+			if(isud != ud[i]) {
+				if(i+1 < c.length && ud[i+1] != ud[i])
+					cnt++;
+				if(i+1 >= c.length) cnt++;
+				if(i+1 < c.length && ud[i+1] == ud[i]) {
+					cnt++;
+					isud = isud == 1 ? 0 : 1;
+				}
 			}
-			if(i == c.length-1 && len > 0) {
-				list.add(len);
-				if(len > 1) cnt--;
-			}
-		}
-		
-		for(int e : list) {
-			if(e == 1) cnt++;
-			else cnt += 2;
 		}
 		System.out.println(cnt);
 	}
