@@ -8,8 +8,8 @@
 
 ## Approaches
 
-* Dynamic Programming
-  1. 규칙이 존재하는지 확인
+#### Dynamic Programming
+  1. 규칙이 존재하는지 확인(경우의 수, 피보나치, 제곱수, ...)
 
 ### A forward step
 
