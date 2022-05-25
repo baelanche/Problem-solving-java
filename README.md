@@ -14,4 +14,4 @@
 ### A forward step
 
 * p25212 : 실수(real number)를 다루는 문제에서 해결이 안된다면, <b>float(유효 자릿수 7)를 double(유효 자릿수 16)로 바꾸어보자</b>.
-
+*  p2407 : 거대한 수는 BigInteger 를 클래스를 사용하여 다룰 수 있다.
