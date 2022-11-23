@@ -20,34 +20,18 @@ public class p1074 {
     }
     
     public static void recursive(int s, int e, int len) {
-        if(len == 2) {
-            if(s == r && e == c) {
-                System.out.println(idx);
-                return;
-            }
-            idx++;
-            if(s == r && e+1 == c) {
-                System.out.println(idx);
-                return;
-            }
-            idx++;
-            if(s+1 == r && e == c) {
-                System.out.println(idx);
-                return;
-            }
-            idx++;
-            if(s+1 == r && e+1 == c) {
-                System.out.println(idx);
-                return;
-            }
-            idx++;
+        if (len == 1) {
+            System.out.println(idx);
             return;
         }
-        
+
         int m = len/2;
         for(int i=0; i<2; i++) {
             for(int j=0; j<2; j++) {
-                recursive(s + m*i, e + m*j, m);
+                if (s + m*i <= r && r < s + m*(i+1) && e + m*j <= c && c < e + m*(j+1)) {
+                    recursive(s + m*i, e + m*j, m);
+                }
+                idx += m * m;
             }
         }
     }
