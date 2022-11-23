@@ -1,5 +1,8 @@
 package boj.collection.prob;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class p10845 {
@@ -55,49 +58,32 @@ public class p10845 {
         return false;
     }
     
-    public void clear() {
-        head = null;
-        size = 0;
-    }
-    
-    public String toString() {
-        String str = "front [";
-        Node temp = head;
-        for(int i=0; i<size; i++) {
-            str += temp.value;
-            if(i != size -1)
-                str += ", ";
-            temp = temp.prev;
-        }
-        return str + "] rear";
-    }
-    
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         
-        int n = sc.nextInt();
-        sc.nextLine();
+        int n = Integer.parseInt(br.readLine());
         
         p10845 q = new p10845();
         
-        while(n-->0) {
-            String str = sc.nextLine();
+        for (int i=0; i<n; i++) {
+            String str = br.readLine();
             if(str.contains("push")) {
                 int push = Integer.parseInt(str.split(" ")[1]);
                 q.push(push);
             } else if(str.contains("pop")) {
-                System.out.println(q.pop());
+                sb.append(q.pop()).append("\n");
             } else if(str.contains("size")) {
-                System.out.println(q.size());
+                sb.append(q.size()).append("\n");
             } else if(str.contains("empty")) {
-                if(q.isEmpty()) System.out.println(1);
-                else System.out.println(0);
+                if(q.isEmpty()) sb.append(1).append("\n");
+                else sb.append(0).append("\n");;
             } else if(str.contains("front")) {
-                System.out.println(q.front());
+                sb.append(q.front()).append("\n");
             } else if(str.contains("back")) {
-                System.out.println(q.back());
+                sb.append(q.back()).append("\n");
             }
         }
-        sc.close();
+        System.out.println(sb.toString());
     }
 }

@@ -1,5 +1,9 @@
+# IDE
+.idea
+
 # compiled source
 bin
+out
 
 # environment
 .settings
