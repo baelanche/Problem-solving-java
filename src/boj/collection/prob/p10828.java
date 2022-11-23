@@ -1,6 +1,8 @@
 package boj.collection.prob;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class p10828 {
 
@@ -52,42 +54,29 @@ public class p10828 {
         return false;
     }
     
-    public String toString() {
-        String str = "top [";
-        Node temp = head;
-        for(int i=0; i<size; i++) {
-            str += temp.value;
-            if(i != size-1) {
-                temp = temp.prev;
-                str += ", ";
-            }
-        }
-        return str += "] bottom";
-    }
-    
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        
-        int n = sc.nextInt();
-        sc.nextLine();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+
+        int n = Integer.parseInt(br.readLine());
         p10828 s = new p10828();
         
         for(int i=0; i<n; i++) {
-            String command = sc.nextLine();
+            String command = br.readLine();
             if(command.contains("push")) {
                 int push = Integer.parseInt(command.split(" ")[1]);
                 s.push(push);
             } else if(command.contains("pop")) {
-                System.out.println(s.pop());
+                sb.append(s.pop()).append("\n");
             } else if(command.contains("size")) {
-                System.out.println(s.size());
+                sb.append(s.size()).append("\n");
             } else if(command.contains("empty")) {
-                if(s.isEmpty()) System.out.println(1);
-                else System.out.println(0);
+                if(s.isEmpty()) sb.append(1).append("\n");
+                else sb.append(0).append("\n");
             } else {
-                System.out.println(s.top());
+                sb.append(s.top()).append("\n");
             }
         }
-        sc.close();
+        System.out.println(sb.toString());
     }
 }
