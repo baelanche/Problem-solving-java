@@ -5,73 +5,71 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
+import java.io.*;
+import java.util.*;
+
 public class p7662 {
-
-    public static Map<Integer, Integer> map;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-
         int t = Integer.parseInt(br.readLine());
-        while (t-->0) {
-            int n = Integer.parseInt(br.readLine());
+
+        for (int tc = 1; tc <= t; tc++) {
+            int k = Integer.parseInt(br.readLine());
+            Map<Integer, Integer> map = new HashMap<>();
             PriorityQueue<Integer> min = new PriorityQueue<>();
             PriorityQueue<Integer> max = new PriorityQueue<>(Collections.reverseOrder());
-            map = new HashMap<>();
-            while (n-->0) {
-                String input = br.readLine();
-                String method = input.split(" ")[0];
-                int value = Integer.parseInt(input.split(" ")[1]);
 
-                if (method.equals("I")) {
-                    min.add(value);
-                    max.add(value);
-                    map.put(value, map.getOrDefault(value, 0) + 1);
+            for (int i = 0; i < k; i++) {
+                String[] input = br.readLine().split(" ");
+                char ch = input[0].charAt(0);
+                int n = Integer.parseInt(input[1]);
+
+                if (ch == 'I') {
+                    map.put(n, map.getOrDefault(n, 0) + 1);
+
+                    min.add(n);
+                    max.add(n);
                 } else {
-                    if (!map.isEmpty()) {
-                        if (value == 1) {
-                            delete(max);
-                        } else {
-                            delete(min);
-                        }
+                    if (map.size() == 0) {
+                        continue;
                     }
+
+                    PriorityQueue<Integer> q = n == 1 ? max : min;
+                    removeMap(q, map);
                 }
             }
 
-            if (map.isEmpty()) {
-                sb.append("EMPTY").append("\n");
+            if (map.size() == 0) {
+                System.out.println("EMPTY");
             } else {
-                int target = delete(max);
-                sb.append(target);
-                if (map.size() > 0) {
-                    target = delete(min);
-                    sb.append(" ").append(target).append("\n");
-                }
+                int n = removeMap(max, map);
+                System.out.println(n + " " + (map.size() > 0 ? removeMap(min, map) : n));
             }
+
         }
-        System.out.println(sb.toString());
+
     }
 
-    public static int delete(Queue<Integer> queue) {
-        int target = 0;
-
+    public static int removeMap(PriorityQueue<Integer> q, Map<Integer, Integer> map) {
+        int num;
         while (true) {
-            target = queue.poll();
-
-            int cnt = map.getOrDefault(target, 0);
+            num = q.poll();
+            int cnt = map.getOrDefault(num, 0);
 
             if (cnt == 0) {
                 continue;
             }
+
             if (cnt == 1) {
-                map.remove(target);
+                map.remove(num);
             } else {
-                map.put(target, cnt - 1);
+                map.put(num, cnt - 1);
             }
+            
             break;
         }
 
-        return target;
+        return num;
     }
+
 }
