@@ -3,12 +3,13 @@ package boj.dfs.prob;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class p1167 {
 
-    public static LinkedList<Node>[] tree;
+    public static ArrayList<Node>[] tree;
     public static boolean[] visited;
     public static int ans = 0;
     public static int longest;
@@ -17,9 +18,9 @@ public class p1167 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int v = Integer.parseInt(st.nextToken());
-        tree = new LinkedList[v+1];
+        tree = new ArrayList[v+1];
         for (int i=1; i<=v; i++) {
-            tree[i] = new LinkedList<>();
+            tree[i] = new ArrayList<>();
         }
 
         for (int i=1; i<=v; i++) {
