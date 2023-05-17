@@ -1,6 +1,8 @@
+package boj.sort.prob;
+
 import java.util.*;
 
-public class Main {
+public class p27315 {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         
