@@ -37,6 +37,8 @@ public class p1916 {
         while (!pq.isEmpty()) {
             Pair curr = pq.poll();
             
+            if (curr.w > dist[curr.v]) continue;
+            
             for (int i=0; i<list[curr.v].size(); i++) {
                 Pair next = list[curr.v].get(i);
                 if (dist[next.v] > curr.w + next.w) {
