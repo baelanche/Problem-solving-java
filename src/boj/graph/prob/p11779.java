@@ -1,3 +1,5 @@
+package boj.graph.prob;
+
 import java.io.*;
 import java.util.*;
 
@@ -35,14 +37,17 @@ public class p11779 {
         dist[s] = 0;
         
         System.out.println(dijkstra(s, e));
-        int target = dist[e];
+        int target = prev[e];
         sb.insert(0, e);
+        int cnt = 1;
         while (true) {
-            if (target == 987654321) break;
-            sb.insert(0, target);
-            target = dist[target];
+            if (target == 987654321 || target == -1) break;
+            sb.insert(0, target + " ");
+            target = prev[target];
+            cnt++;
         }
-        System.out.println(sb.toString());
+        System.out.println(cnt);
+        System.out.println(sb.toString().trim());
         
     }
     
